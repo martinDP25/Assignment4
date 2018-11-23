@@ -10,10 +10,10 @@ public class Dice {
 	Random rand = new Random();
 	
 	//Dice constructor, default set to 0 for each dice.
-	public Dice(int d1, int d2)
+	public Dice()
 	{
-		dice1=d1=0;
-		dice2=d2=0;
+		dice1=0;
+		dice2=0;
 	}
 	
 	//Get method for both Dice variables
