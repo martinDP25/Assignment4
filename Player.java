@@ -1,17 +1,22 @@
-
 public class Player {
-
-	String name;
-	Garden garden=new Garden();
+ 	private String name;
+	private Garden garden;
 	
 	public Player(String name, int garden)
 	{
+		this.name=name;
+		this.garden=new Garden(garden);
 		
 	}
 	
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void setName(String name)
+	{
+		this.name=name;
 	}
 	
 	public int howManyFlowersPossible()
@@ -47,6 +52,11 @@ public class Player {
 	public boolean isGardenFull()
 	{
 		return garden.gardenFull();
+	}
+	
+	public boolean isGardenEmpty()
+	{
+		return garden.gardenEmpty();
 	}
 	
 	public String showGarden()
