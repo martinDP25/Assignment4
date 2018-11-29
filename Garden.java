@@ -18,7 +18,7 @@ public class Garden {
 			garden=new char [N][N];
 		}else if(N<3)
 		{
-			System.out.println("Please pick a value equal to 3 or greater");
+			System.out.println("Please pick a value equal to 3 or greater.");
 			System.exit(0);
 		}
 		initializeGarden();
@@ -43,13 +43,20 @@ public class Garden {
 	
 	public char plantFlower(int r, int c)
 	{
+		if(garden[r][c]=='f' || garden[r][c]=='t')
+		{
+			System.out.println("**Sorry, but this action is unavailable due to insufficient space.");
+		}else
 		garden[r][c]='f';
-		
 		return garden[r][c];
 	}
 	
 	public char plantTree(int r, int c)
 	{
+		if(garden[r][c]=='f' || garden[r][c]=='t')
+		{
+			System.out.println("**Sorry, but this action is unavailable due to insufficient space.");
+		}else
 		garden[r][c]='t';
 		garden[r+1][c]='t';
 		garden[r][c+1]='t';
@@ -60,8 +67,12 @@ public class Garden {
 	
 	public char removeFlower(int r, int c)
 	{
+		if(garden[r][c]=='f' || garden[r][c]=='t')
+		{
+			garden[r][c]='-';
+		}else
 		garden[r][c]='-';
-		return 0;
+		return garden[r][c];
 	}
 	
 	public int countPossibleTrees()
@@ -111,13 +122,35 @@ public class Garden {
 		return true;
 	}
 	
-	public String toString()
+	public boolean gardenEmpty()
 	{
-		for(int x = 0; x<garden.length; x++)
+		for(int x=0; x<garden.length; x++)
 		{
 			for(int y=0; y<garden[x].length; y++)
 			{
-				System.out.print(garden[x][y] + " ");
+				if(garden[x][y]=='f' || garden[x][y]=='t')
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public String toString()
+	{
+		System.out.print("  | ");
+		for(int z=0; z<garden.length; z++)
+		{
+			System.out.print(z + "  ");
+		}
+		System.out.println("");
+		for(int x = 0; x<garden.length; x++)
+		{
+			System.out.print(x + " | ");
+			for(int y=0; y<garden[x].length; y++)
+			{
+				System.out.print(garden[x][y] + "  ");
 			}
 			System.out.println("");
 		}
