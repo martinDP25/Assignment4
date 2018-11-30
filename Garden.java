@@ -16,14 +16,11 @@ public class Garden {
 		if(N>=3)
 		{
 			garden=new char [N][N];
-		}else if(N<3)
-		{
-			System.out.println("Please pick a value equal to 3 or greater.");
-			System.exit(0);
 		}
 		initializeGarden();
 	}
 	
+	//Method intializes garden to "empty", making each space a '-' character.
 	private char initializeGarden()
 	{
 		for(int x = 0; x<garden.length; x++)
@@ -36,27 +33,28 @@ public class Garden {
 		return 0;
 	}
 	
+	//Accessor method I placed myself to return garden length.
+	public int getGardenLength()
+	{
+		return garden.length;
+	}
+	
+	//Accessor method to return what is in the gardens specific location.
 	public char getInLocation(int r, int c)
 	{
 		return garden[r][c];
 	}
 	
+	//Method to plant flower at desired location.
 	public char plantFlower(int r, int c)
-	{
-		if(garden[r][c]=='f' || garden[r][c]=='t')
-		{
-			System.out.println("**Sorry, but this action is unavailable due to insufficient space.");
-		}else
+	{	
 		garden[r][c]='f';
 		return garden[r][c];
 	}
 	
+	//Method to plant tree at desired location.
 	public char plantTree(int r, int c)
 	{
-		if(garden[r][c]=='f' || garden[r][c]=='t')
-		{
-			System.out.println("**Sorry, but this action is unavailable due to insufficient space.");
-		}else
 		garden[r][c]='t';
 		garden[r+1][c]='t';
 		garden[r][c+1]='t';
@@ -65,6 +63,7 @@ public class Garden {
 		return garden[r][c];
 	}
 	
+	//Method to remove flower/part of tree. Used by the rabbit. 
 	public char removeFlower(int r, int c)
 	{
 		if(garden[r][c]=='f' || garden[r][c]=='t')
@@ -75,6 +74,7 @@ public class Garden {
 		return garden[r][c];
 	}
 	
+	//Method that returns possible tree spaces.
 	public int countPossibleTrees()
 	{
 		int ST=0;
@@ -91,6 +91,7 @@ public class Garden {
 		return ST;
 	}
 	
+	//Method that returns possible flower locations.
 	public int countPossibleFlowers()
 	{
 		int SF=0;
@@ -107,6 +108,7 @@ public class Garden {
 		return SF;
 	}
 	
+	//Methods that returns true if garden is full.
 	public boolean gardenFull()
 	{
 		for(int x=0; x<garden.length; x++)
@@ -122,6 +124,7 @@ public class Garden {
 		return true;
 	}
 	
+	//Method that returns true if garden is empty.
 	public boolean gardenEmpty()
 	{
 		for(int x=0; x<garden.length; x++)
@@ -137,6 +140,7 @@ public class Garden {
 		return true;
 	}
 	
+	//toString method that prints actual garden, along with its size.
 	public String toString()
 	{
 		System.out.print("  | ");
